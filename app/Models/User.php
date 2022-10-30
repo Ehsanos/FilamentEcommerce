@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,8 +15,9 @@ use Spatie\Permission\Traits\HasRoles;
 use Lab404\Impersonate\Models\Impersonate;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
+
 
     use HasApiTokens, HasFactory, Notifiable,HasRoles;
 
@@ -66,5 +68,10 @@ class User extends Authenticatable
 //        return 1;
 //
 //    }
+
+    public function canAccessFilament():bool{
+        return str_ends_with($this->email,'.com');
+
+    }
 
 }

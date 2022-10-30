@@ -141,8 +141,7 @@ return [
         'register' => [
             Widgets\AccountWidget::class,
             Widgets\StatsOverviewWidget::class,
-            Widgets\PolarAreaChartWidget::class,
-            Widgets\RadarChartWidget::class,
+
 
 
         ],
